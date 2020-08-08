@@ -18,6 +18,10 @@ git clone https://github.com/MumetNgoding/AnyKernel3.git -b master
 
 #Download Clang
 if [ ! -d clang ]; then
+git clone https://github.com/kdrag0n/proton-clang clang/proton/ --depth=1
+
+#Download Clang
+if [ ! -d clang ]; then
     git clone https://github.com/silont-project/silont-clang.git --depth=1
 #    git clone https://github.com/arter97/arm64-gcc.git --depth=1
 #    git clone https://github.com/arter97/arm32-gcc.git --depth=1
@@ -26,7 +30,7 @@ fi
 
 # Download libufdt
 if [ ! -d libufdt ]; then
-    wget https://android.googlesource.com/platform/system/libufdt/+archive/refs/tags/android-10.0.0_r35/utils.tar.gz
+    wget https://android.googlesource.com/platform/system/libufdt/+archive/refs/tags/android-10.0.0_r41/utils.tar.gz
     mkdir -p libufdt
     tar xvzf utils.tar.gz -C libufdt
     rm utils.tar.gz
