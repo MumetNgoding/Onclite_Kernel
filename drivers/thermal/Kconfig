@@ -494,7 +494,6 @@ config INTELLI_THERMAL
 	  This enables thermal monitoring capability in the kernel replacing
 	  userspace thermal monitoring altogether.
 
-endchoice
 
 menu "Qualcomm thermal drivers"
 depends on (ARCH_QCOM && OF) || COMPILE_TEST
