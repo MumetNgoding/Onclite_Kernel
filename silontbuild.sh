@@ -14,7 +14,7 @@ ZIP_DIR=$KERNEL_DIR/AnyKernel3
 CONFIG=onclite-perf_defconfig
 CROSS_COMPILE="aarch64-linux-android-"
 CROSS_COMPILE_ARM32="arm-linux-androideabi-"
-PATH=:"${KERNEL_DIR}/silont-clang/bin:${PATH}:${KERNEL_DIR}/stock/bin:${PATH}:${KERNEL_DIR}/stock_32/bin:${PATH}"
+PATH=:"${KERNEL_DIR}/clang/proton/bin:${PATH}:${KERNEL_DIR}/stock/bin:${PATH}:${KERNEL_DIR}/stock_32/bin:${PATH}"
 
 # Export
 export ARCH=arm64
@@ -51,17 +51,13 @@ for MODULES in $(find "${OUTDIR}" -name '*.ko'); do
             "${OUTDIR}/certs/signing_key.x509" \
             "${MODULES}"
     find "${OUTDIR}" -name '*.ko' -exec cp {} "${VENDOR_MODULEDIR}" \;
-    case ${MODULES} in
-            */wlan.ko)
-        cp "${MODULES}" "${VENDOR_MODULEDIR}/wlan.ko" ;;
-    esac
 done
 cd libufdt/src && python mkdtboimg.py create $OUTDIR/arch/arm64/boot/dtbo.img $OUTDIR/arch/arm64/boot/dts/qcom/*.dtbo
 echo -e "\n(i) Done moving modules"
-rm "${VENDOR_MODULEDIR}/wlan.ko"
 
 cd $ZIP_DIR
 cp $KERN_IMG zImage
+cp $OUTDIR/arch/arm64/boot/dtbo.img $ZIP_DIR
 make normal &>/dev/null
 echo "Flashable zip generated under $ZIP_DIR."
 cd ..
