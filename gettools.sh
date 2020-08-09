@@ -5,7 +5,7 @@
 # Android Kernel Build Script
 
 # Install build package for debian based linux
-sudo apt install bc bash git-core gnupg build-essential \
+apt install bc bash git-core gnupg build-essential \
     zip curl make automake autogen autoconf autotools-dev libtool shtool python \
     m4 gcc libtool zlib1g-dev flex bison libssl-dev
 
@@ -18,11 +18,7 @@ git clone https://github.com/MumetNgoding/AnyKernel3.git -b master
 
 #Download Clang
 if [ ! -d clang ]; then
-git clone https://github.com/kdrag0n/proton-clang clang/proton/ --depth=1
-
-#Download Clang
-if [ ! -d clang ]; then
-    git clone https://github.com/silont-project/silont-clang.git --depth=1
+git clone https://github.com/silont-project/silont-clang.git --depth=1
 #    git clone https://github.com/arter97/arm64-gcc.git --depth=1
 #    git clone https://github.com/arter97/arm32-gcc.git --depth=1
 #    git clone https://github.com/MumetNgoding/proton-clang.git --depth=1
