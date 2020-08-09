@@ -5,7 +5,7 @@
 # Android Kernel Build Script
 
 # Add Depedency
-apt-get -y install bc build-essential zip curl libstdc++6 git default-jre default-jdk wget nano python-is-python3 gcc clang libssl-dev rsync flex bison && pip3 install telegram-send
+#apt-get -y install bc build-essential zip curl libstdc++6 git default-jre default-jdk wget nano python-is-python3 gcc clang libssl-dev rsync flex bison && pip3 install telegram-send
 
 # Main environtment
 KERNEL_DIR=$PWD
@@ -56,6 +56,7 @@ for MODULES in $(find "${OUTDIR}" -name '*.ko'); do
         cp "${MODULES}" "${VENDOR_MODULEDIR}/wlan.ko" ;;
     esac
 done
+cd libufdt/src && python mkdtboimg.py create $OUTDIR/arch/arm64/boot/dtbo.img $OUTDIR/arch/arm64/boot/dts/qcom/*.dtbo
 echo -e "\n(i) Done moving modules"
 rm "${VENDOR_MODULEDIR}/wlan.ko"
 
