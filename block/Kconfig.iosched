@@ -62,15 +62,12 @@ choice
 	config DEFAULT_NOOP
 		bool "No-op"
 
-<<<<<<< HEAD
-=======
 	config DEFAULT_ANXIETY
 		bool "Anxiety" if IOSCHED_ANXIETY=y
 
 	config DEFAULT_ZEN
 		bool "ZEN" if IOSCHED_ZEN=y
 
->>>>>>> e5671c940685... block: add zen scheduler
 endchoice
 
 config DEFAULT_IOSCHED
@@ -78,10 +75,7 @@ config DEFAULT_IOSCHED
 	default "deadline" if DEFAULT_DEADLINE
 	default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
-<<<<<<< HEAD
-=======
 	default "zen" if DEFAULT_ZEN
->>>>>>> e5671c940685... block: add zen scheduler
 
 endmenu
 
